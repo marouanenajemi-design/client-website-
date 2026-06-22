@@ -1,0 +1,258 @@
+<!--
+  QOFFA — Hero section (Elementor-ready, full-bleed background)
+  ────────────────────────────────────────────────────────────
+  HOW TO USE IN ELEMENTOR:
+  1. Add an "HTML" widget where you want the hero (it will stretch full width by itself).
+  2. Paste this ENTIRE block (the <style> + the <section>) into it.
+  3. Upload "heroqofa.webp" to the WordPress Media Library and replace BOTH
+     occurrences of REPLACE_WITH_IMAGE_URL below with its real URL, e.g.
+     https://your-site.com/wp-content/uploads/2026/06/heroqofa.webp
+  4. Update the WhatsApp number in the button href (wa.me/2126XXXXXXXX).
+
+  Notes:
+  • Everything is scoped to .cw-qoffa-hero — no body/html/global rules.
+  • The basket photo IS the background; the "100% FRAIS" badge and the corner
+    mosaic are part of that image (no separate <img> / badge element).
+  • A left→right cream overlay keeps the text readable; on phones it becomes a
+    top→bottom overlay so the basket sits below the text.
+  • The Google Fonts line is optional — remove it if your theme already loads
+    these fonts, or to avoid any external request.
+-->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Playfair+Display:wght@700;800;900&family=Poppins:wght@400;500;600&display=swap');
+
+.cw-qoffa-hero {
+  --cw-qoffa-brown:   #46311e;   /* brand wordmark  */
+  --cw-qoffa-green:   #1e5e36;   /* title           */
+  --cw-qoffa-subtle:  #7e7059;   /* subtitle / note */
+  --cw-qoffa-wa:      #2ea35a;
+  --cw-qoffa-wa-deep: #1f8447;
+  --cw-qoffa-cream:   #f6eeda;
+  --cw-qoffa-serif:  "Playfair Display", Georgia, "Times New Roman", serif;
+  --cw-qoffa-arabic: "Amiri", "Scheherazade New", "Noto Naskh Arabic", Georgia, serif;
+  --cw-qoffa-sans:   "Poppins", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+
+  /* full-bleed: stretch edge-to-edge inside any container */
+  position: relative;
+  width: 100vw;
+  max-width: none;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  overflow: hidden;
+  isolation: isolate;
+
+  display: flex;
+  align-items: center;
+  min-height: clamp(460px, 60vh, 640px);
+
+  font-family: var(--cw-qoffa-sans);
+  background-color: var(--cw-qoffa-cream);
+  background-image:
+    linear-gradient(90deg,
+      rgba(246,238,218,.97) 0%,
+      rgba(246,238,218,.92) 34%,
+      rgba(246,238,218,.58) 54%,
+      rgba(246,238,218,.18) 74%,
+      rgba(246,238,218,0)  100%),
+    url("REPLACE_WITH_IMAGE_URL/heroqofa.webp");
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+.cw-qoffa-hero * { box-sizing: border-box; }
+
+/* Moroccan zellige ornament — top-left */
+.cw-qoffa-hero__ornament {
+  position: absolute;
+  top: -14px;
+  left: -14px;
+  z-index: 0;
+  width: clamp(150px, 22vw, 320px);
+  height: clamp(150px, 22vw, 320px);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%2346311e' stroke-width='1'%3E%3Cpolygon points='40,8 45.4,28.6 64.7,18.8 53.5,37.3 74,40 53.5,42.7 64.7,61.2 45.4,51.4 40,72 34.6,51.4 15.3,61.2 26.5,42.7 6,40 26.5,37.3 15.3,18.8 34.6,28.6'/%3E%3Ccircle cx='40' cy='40' r='6.5'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 58px 58px;
+  background-repeat: repeat;
+  opacity: .13;
+  -webkit-mask-image: radial-gradient(130% 130% at top left, #000 0%, transparent 70%);
+          mask-image: radial-gradient(130% 130% at top left, #000 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Inner container */
+.cw-qoffa-hero__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding: clamp(48px, 8vw, 96px) clamp(22px, 5vw, 64px);
+}
+
+/* Text block — sits on the LEFT, content centered */
+.cw-qoffa-hero__content {
+  max-width: 540px;
+  text-align: center;
+}
+
+/* Brand lockup: قفة directly above QOFFA, tight */
+.cw-qoffa-hero__brandlock { margin: 0 0 clamp(14px, 2vw, 22px); }
+.cw-qoffa-hero__arabic {
+  margin: 0;
+  font-family: var(--cw-qoffa-arabic);
+  direction: rtl;
+  font-size: clamp(1.85rem, 4vw, 2.85rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--cw-qoffa-brown);
+}
+.cw-qoffa-hero__brand {
+  display: block;
+  margin: 1px 0 0;
+  font-family: var(--cw-qoffa-serif);
+  font-size: clamp(2.6rem, 6vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: .12em;
+  line-height: 1;
+  color: var(--cw-qoffa-brown);
+}
+
+.cw-qoffa-hero__title {
+  margin: 0 0 clamp(12px, 1.8vw, 18px);
+  font-family: var(--cw-qoffa-serif);
+  font-size: clamp(1.7rem, 3.6vw, 2.9rem);
+  font-weight: 700;
+  line-height: 1.16;
+  color: var(--cw-qoffa-green);
+}
+.cw-qoffa-hero__title span { display: block; }
+
+.cw-qoffa-hero__subtitle {
+  margin: 0 0 clamp(22px, 3vw, 30px);
+  font-size: clamp(.96rem, 1.5vw, 1.12rem);
+  font-weight: 500;
+  letter-spacing: .05em;
+  color: var(--cw-qoffa-subtle);
+}
+
+/* WhatsApp button */
+.cw-qoffa-hero__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 28px 13px 14px;
+  border-radius: 50px;
+  font-family: var(--cw-qoffa-sans);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--cw-qoffa-wa) 0%, var(--cw-qoffa-wa-deep) 100%);
+  box-shadow: 0 10px 26px rgba(31,132,71,.30);
+  transition: transform .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+.cw-qoffa-hero__cta:hover  { transform: translateY(-3px); box-shadow: 0 16px 34px rgba(31,132,71,.40); filter: brightness(1.04); }
+.cw-qoffa-hero__cta:active { transform: translateY(-1px); }
+.cw-qoffa-hero__wa-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+}
+.cw-qoffa-hero__wa-icon svg { width: 18px; height: 18px; color: var(--cw-qoffa-wa-deep); }
+
+/* Delivery note */
+.cw-qoffa-hero__delivery {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin: clamp(15px, 2.2vw, 20px) 0 0;
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--cw-qoffa-subtle);
+}
+.cw-qoffa-hero__delivery svg { width: 18px; height: 18px; flex-shrink: 0; stroke: var(--cw-qoffa-green); }
+
+/* Entrance */
+@media (prefers-reduced-motion: no-preference) {
+  .cw-qoffa-hero__content { animation: cw-qoffa-rise .7s cubic-bezier(.22,.61,.36,1) both; }
+  @keyframes cw-qoffa-rise {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* Tablet */
+@media (max-width: 960px) {
+  .cw-qoffa-hero { background-position: 74% center; min-height: clamp(440px, 56vh, 580px); }
+  .cw-qoffa-hero__content { max-width: 460px; }
+}
+
+/* Mobile — overlay flips to top→bottom, basket drops below the text */
+@media (max-width: 768px) {
+  .cw-qoffa-hero {
+    align-items: flex-start;
+    min-height: clamp(560px, 92vh, 720px);
+    background-image:
+      linear-gradient(180deg,
+        rgba(246,238,218,.97) 0%,
+        rgba(246,238,218,.90) 38%,
+        rgba(246,238,218,.45) 66%,
+        rgba(246,238,218,.10) 100%),
+      url("REPLACE_WITH_IMAGE_URL/heroqofa.webp");
+    background-position: center bottom;
+  }
+  .cw-qoffa-hero__inner { padding: clamp(40px, 9vw, 64px) 22px; }
+  .cw-qoffa-hero__content { max-width: 100%; margin-inline: auto; }
+  .cw-qoffa-hero__ornament { opacity: .09; }
+}
+@media (max-width: 420px) {
+  .cw-qoffa-hero__cta { width: 100%; justify-content: center; }
+}
+</style>
+
+<section class="cw-qoffa-hero">
+
+  <!-- Moroccan zellige ornament (top-left) -->
+  <span class="cw-qoffa-hero__ornament" aria-hidden="true"></span>
+
+  <div class="cw-qoffa-hero__inner">
+
+    <!-- Text block (left, over the basket background) -->
+    <div class="cw-qoffa-hero__content">
+
+      <!-- Brand lockup: قفة directly above QOFFA -->
+      <div class="cw-qoffa-hero__brandlock">
+        <p class="cw-qoffa-hero__arabic" lang="ar" dir="rtl">قفة</p>
+        <span class="cw-qoffa-hero__brand">QOFFA</span>
+      </div>
+
+      <h1 class="cw-qoffa-hero__title">
+        <span>Fruits &amp; légumes frais</span>
+        <span>livrés chez vous</span>
+      </h1>
+
+      <p class="cw-qoffa-hero__subtitle">Fraîcheur&nbsp;•&nbsp;Qualité&nbsp;•&nbsp;Rapidité</p>
+
+      <a class="cw-qoffa-hero__cta" href="https://wa.me/212612345678" target="_blank" rel="noopener">
+        <span class="cw-qoffa-hero__wa-icon" aria-hidden="true">
+          <svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 0C7.164 0 0 7.164 0 16c0 2.824.736 5.474 2.025 7.775L0 32l8.46-2.217A15.93 15.93 0 0 0 16 32c8.836 0 16-7.164 16-16S24.836 0 16 0zm0 29.333a13.28 13.28 0 0 1-6.791-1.859l-.488-.291-5.02 1.315 1.338-4.89-.318-.502A13.244 13.244 0 0 1 2.667 16C2.667 8.636 8.636 2.667 16 2.667S29.333 8.636 29.333 16 23.364 29.333 16 29.333zm7.273-9.961c-.399-.2-2.358-1.163-2.723-1.295-.365-.133-.631-.199-.897.2-.266.398-1.03 1.295-1.262 1.561-.232.266-.465.299-.864.1-.399-.2-1.684-.621-3.207-1.98-1.185-1.058-1.985-2.364-2.217-2.763-.232-.398-.025-.613.174-.812.178-.177.399-.465.598-.697.199-.232.266-.399.399-.665.132-.266.066-.498-.034-.697-.1-.2-.897-2.162-1.228-2.96-.324-.778-.652-.672-.897-.685l-.765-.013c-.266 0-.698.1-.864.298-.166.2-1.063.963-1.063 2.35s1.09 2.73 1.224 3.048c.266.532 3.946 6.396 9.56 8.706a32.17 32.17 0 0 0 3.19 1.178c1.34.427 2.561.367 3.524.222.765-.114 2.359-.964 2.691-1.895.332-.93.332-1.729.232-1.895-.1-.166-.366-.266-.764-.465z"/></svg>
+        </span>
+        Commander sur WhatsApp
+      </a>
+
+      <p class="cw-qoffa-hero__delivery">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 3v5h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        Livraison rapide à Rabat, Salé &amp; Témara
+      </p>
+
+    </div>
+
+  </div>
+</section>
